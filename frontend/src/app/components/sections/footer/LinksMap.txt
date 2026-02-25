@@ -1,0 +1,10 @@
+This placeholder file documents that Quick Links in the footer map to:
+- /newsletter
+- /cbse-disclosure
+- /uniform
+- /books
+- /work-with-us
+- /policies
+
+These routes are implemented under src/app/[route]/page.jsx.
+

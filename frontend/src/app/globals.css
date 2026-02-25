@@ -1,0 +1,229 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --green: #73be48;
+    --green-foreground: #73be48;
+
+    --warm: #fff0e5;
+
+    --cream-foreground: #fff;
+
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+
+    --radius: 0.5rem;
+
+    --default-font-size: 16px;
+    --default-line-height: 160%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    /* Lock dark theme to be identical to light theme */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-size: var(--default-font-size);
+    font-family: Montserrat;
+    color: var(--muted-foreground);
+    line-height: var(--default-line-height);
+    background-color: var(--background);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: Poppins;
+  }
+
+  p {
+    color: var(--foreground);
+  }
+}
+
+@layer utilities {
+  .stroke-primary {
+    -webkit-text-fill-color: var(--cream-foreground);
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #686868;
+  }
+}
+
+@layer components {
+  /* ------- card hover image slide up start -------- */
+  .image-layer-hover {
+    background-size: cover;
+    width: 25%;
+    height: 100%;
+    transition: 0.5s;
+  }
+
+  .image-layer-hover:nth-child(1) {
+    background-position: 0;
+    transition-delay: 0;
+  }
+
+  .image-layer-hover:nth-child(2) {
+    background-position: 33.33%;
+    transition-delay: 0.1s;
+  }
+
+  .image-layer-hover:nth-child(3) {
+    background-position: 66.66%;
+    transition-delay: 0.2s;
+  }
+
+  .image-layer-hover:nth-child(4) {
+    background-position: 100%;
+    transition-delay: 0.3s;
+  }
+
+  .layer-card:hover .image-layer-hover {
+    transform: translateY(-100%);
+  }
+
+  /* ------- card hover image slide up end -------- */
+}
+
+/* service swiper pagination */
+.services .swiper-pagination-bullets.swiper-pagination-horizontal {
+  left: 0;
+  top: 0;
+  width: auto;
+  display: flex;
+  gap: 10px;
+}
+
+.services .swiper-pagination-bullet {
+  height: 5px;
+  width: 15px;
+  border-radius: 10px;
+  display: block;
+  background-color: #f2f2f2;
+}
+
+.services .swiper-pagination-bullet-active {
+  width: 33px;
+  background-color: var(--secondary);
+}
+
+/* service swiper pagination end*/
+@media only screen and (max-width: 1024px) {
+  body {
+    text-align: center !important;
+  }
+
+  .icon_responsive {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.card_custom_design {
+  background: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Custom scrollbar styling */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px; /* Width of the scrollbar */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Background of the track */
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #888; /* Scrollbar thumb color */
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Hover color for the scrollbar thumb */
+}
+
+/* body {
+  user-select: none;
+} */
