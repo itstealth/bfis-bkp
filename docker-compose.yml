@@ -38,7 +38,12 @@ services:
 
   # 3. Frontend (Next.js)
   bfis_frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      args:
+        NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL}
+        NEXT_PUBLIC_UPLOADS_BASE_URL: ${NEXT_PUBLIC_UPLOADS_BASE_URL}
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL}
     container_name: bfis_frontend
     restart: always
     ports:
