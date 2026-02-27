@@ -5,8 +5,16 @@ ini_set('display_errors', 1);
 ini_set('log_errors', 1);
 ini_set('error_log', __DIR__ . '/php-errors.log');
 
-// Enable CORS (Cross-Origin Resource Sharing)
-header("Access-Control-Allow-Origin: *");
+// CORS headers - restrict to allowed origins
+$allowed_origins = [
+    'https://www.bfis.in',
+    'https://bfis.in',
+    'http://localhost:3000'
+];
+$origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
+if (in_array($origin, $allowed_origins)) {
+    header("Access-Control-Allow-Origin: " . $origin);
+}
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 header('Content-Type: application/json');

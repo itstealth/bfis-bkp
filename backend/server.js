@@ -67,6 +67,23 @@ app.use(
   })
 );
 
+  // CSRF protection: validate Origin header on state-changing requests
+  const allowedOrigins = [
+    "https://www.bfis.in",
+    "https://bfis.in",
+    "http://localhost:3000",
+  ];
+  app.use((req, res, next) => {
+    if (["GET", "HEAD", "OPTIONS"].includes(req.method)) {
+      return next();
+    }
+    const origin = req.headers.origin;
+    if (origin && !allowedOrigins.includes(origin)) {
+      return res.status(403).json({ error: "CSRF validation failed: origin not allowed" });
+    }
+    return next();
+  });
+
 
   // Body parser configuration
   app.use(bodyParser.json({ limit: "50mb" }));
